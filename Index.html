@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Tìm Kiếm và Hiển Thị Thông Tin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .search-box {
+            text-align: center;
+        }
+        #info-grid {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        #info-grid th, #info-grid td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        #info-grid th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trang Tìm Kiếm và Hiển Thị Thông Tin</h1>
+        
+        <div class="search-box">
+            <label for="search">Chọn thông tin:</label>
+            <select id="search">
+                <option value="option1">Tùy chọn 1</option>
+                <option value="option2">Tùy chọn 2</option>
+                <option value="option3">Tùy chọn 3</option>
+                <!-- Thêm các tùy chọn khác tại đây -->
+            </select>
+            <button onclick="searchInfo()">Tìm Kiếm</button>
+        </div>
+        
+        <table id="info-grid">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Địa chỉ</th>
+                    <th>Điện thoại</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Người 1</td>
+                    <td>123 Đường A, Quận X, TP Y</td>
+                    <td>123-456-7890</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Người 2</td>
+                    <td>456 Đường B, Quận Y, TP Z</td>
+                    <td>987-654-3210</td>
+                </tr>
+                <!-- Thêm dữ liệu khác tại đây -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function searchInfo() {
+            // Xử lý tìm kiếm dựa trên giá trị của combobox và cập nhật grid thông tin
+            var searchValue = document.getElementById("search").value;
+            var infoGrid = document.getElementById("info-grid").getElementsByTagName("tbody")[0];
+            var rows = infoGrid.getElementsByTagName("tr");
+
+            for (var i = 0; i < rows.length; i++) {
+                var data = rows[i].getElementsByTagName("td")[0].textContent;
+                if (data === searchValue) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+               
